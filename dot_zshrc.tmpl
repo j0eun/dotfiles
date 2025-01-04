@@ -1,3 +1,5 @@
+{{- if eq .chezmoi.os "darwin" -}}
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:$HOME/.cargo/bin:$PATH
 
@@ -99,6 +101,21 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    # prompt_segment white default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
+
+export EDITOR="/opt/homebrew/bin/hx"
+
+{{ else if eq .chezmoi.os "linux" }}
+{{   if eq .chezmoi.osRelease.id "kali" }}
+{{   else if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+{{   end }}
+{{ end }}
+
 function edit_file {
   local target
   target=$(fd -tf -H . / | fzf)
@@ -117,12 +134,6 @@ function cd2 {
 
 alias e='edit_file'
 alias g='cd2'
-
-prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    # prompt_segment white default "%(!.%{%F{yellow}%}.)$USER"
-  fi
-}
 
 if [ "$TMUX" = "" ]; then tmux; fi
   
