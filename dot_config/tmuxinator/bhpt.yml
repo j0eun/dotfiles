@@ -15,7 +15,7 @@ root: ~/Documents/bhpt/<%= @args[0] %>
 # on_project_start: command
 
 # Run on project start, the first time
-on_project_first_start: \[ -d ~/Documents/bhpt/<%= @args[0] %> \] || mkdir ~/Documents/bhpt/<%= @args[0] %>
+on_project_first_start: \[ -d ~/Documents/bhpt/<%= @args[0] %> \] || mkdir -p ~/Documents/bhpt/<%= @args[0] %>
 
 # Run on project start, after the first time
 # on_project_restart: command
