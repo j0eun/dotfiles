@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ ! -d $HOME/.local/bin ]]; then
+	mkdir -p $HOME/.local/bin
+fi
+
+sudo apt update
+
+xargs sudo apt install -y < {{ .chezmoi.sourceDir }}/Aptgetfile
