@@ -1,0 +1,10 @@
+{{ $email := promptStringOnce . "email" "What is your email address" "eeunjo@proton.me" -}}
+{{ $name := promptStringOnce . "name" "What is your name or nickname" "j0eun" -}}
+
+{{ if eq .chezmoi.os "windows" -}}
+[cd]
+command = "pwsh"
+{{ end -}}
+
+[edit]
+command = "hx"
