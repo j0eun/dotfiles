@@ -1,0 +1,15 @@
+ {{ if ne .chezmoi.os "linux" }}
+.chezmoiscripts/linux/**
+{{ end }}
+
+{{ if ne .chezmoi.os "darwin" }}
+.chezmoiscripts/darwin/**
+{{ end }}
+
+{{ if ne .chezmoi.os "windows" }}
+.chezmoiscripts/windows/**
+Microsoft.PowerShell_profile.ps1
+{{ else }}
+.zshrc
+.tmux.conf
+{{ end }}
