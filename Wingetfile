@@ -22,9 +22,6 @@
 					"PackageIdentifier" : "Helix.Helix"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Sysinternals.ProcessExplorer"
-				},
-				{
 					"PackageIdentifier" : "MikeFarah.yq"
 				},
 				{
@@ -39,15 +36,6 @@
 				{
 					"PackageIdentifier" : "sharkdp.fd"
 				},
-				{
-					"PackageIdentifier" : "twpayne.chezmoi"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.AppInstaller"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal"
-				}
 			],
 			"SourceDetails" : 
 			{
