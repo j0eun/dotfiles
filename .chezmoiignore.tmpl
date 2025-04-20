@@ -1,15 +1,18 @@
- {{ if ne .chezmoi.os "linux" }}
+ {{ if ne .chezmoi.os "linux" -}}
 .chezmoiscripts/linux/**
-{{ end }}
+Aptgetfile
+{{ end -}}
 
-{{ if ne .chezmoi.os "darwin" }}
+{{ if ne .chezmoi.os "darwin" -}}
 .chezmoiscripts/darwin/**
-{{ end }}
+{{ end -}}
 
-{{ if ne .chezmoi.os "windows" }}
+{{ if ne .chezmoi.os "windows" -}}
 .chezmoiscripts/windows/**
 Microsoft.PowerShell_profile.ps1
-{{ else }}
+WindowsTerminal_Profile.json
+{{ else -}}
+.config/tmuxinator/**
 .zshrc
 .tmux.conf
-{{ end }}
+{{ end -}}
