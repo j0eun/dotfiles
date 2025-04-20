@@ -2,13 +2,13 @@
 {{ $name := promptStringOnce . "name" "What is your name or nickname" -}}
 
 data:
-	email: {{ $email | quote }}
-	name: {{ $name | quote }}
-	
+  email: {{ $email }}
+  name: {{ $name }}
+
 {{ if eq .chezmoi.os "windows" -}}
 cd:
-	command: "pwsh"
+  command: pwsh
 {{ end -}}
 
 edit:
-	command: "hx"
+  command: hx
