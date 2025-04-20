@@ -1,2 +1,16 @@
 Write-Host -ForegroundColor Cyan Installing packages...
-winget import --import-file {{ .chezmoi.sourceDir }}/Wingetfile
+
+winget import --import-file {{ .chezmoi.sourceDir }}\Wingetfile
+
+Write-Host -ForegroundColor Cyan Bootstrapping Pwsh...
+
+$pwshRoot = "$env:USERPROFILE\Documents\PowerShell"
+if ( -not (Test-Path -Path $pwshRoot) ) {
+    New-Item -ItemType Directory $pwshRoot
+}
+Copy-Item {{ .chezmoi.sourceDir }}\Microsoft.PowerShell_profile.ps1 $pwshRoot\Microsoft.PowerShell_profile.ps1
+
+# TODO: Download and install the Nerd fonts
+Write-Host -ForegroundColor Cyan Bootstrapping Windows Terminal...
+
+Copy-Item {{ .chezmoi.sourceDir }}\WindowsTerminal_Profile.json $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
