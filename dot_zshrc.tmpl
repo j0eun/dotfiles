@@ -387,7 +387,7 @@ export SUDO_EDITOR="$HOME/.local/bin/hx"
 
 FZF_HELIX() {
 	local target
-	target=$(fd --type f --hidden . / | fzf)
+	target=$(fd --type f --hidden --exclude /mnt/c . / | fzf)
 	if [[ -n "$target" ]]; then
 		hx -w $(dirname "$target") "$target"
 	fi
@@ -395,7 +395,7 @@ FZF_HELIX() {
 
 FZF_CD() {
 	local target
-	target=$(fd --type d --hidden . / | fzf)
+	target=$(fd --type d --hidden --exclude /mnt/c . / | fzf)
 	if [[ -n "$target" ]]; then
 		cd "$target"
 	fi
@@ -404,16 +404,19 @@ FZF_CD() {
 alias e=FZF_HELIX
 alias g=FZF_CD
 
+alias scb='xclip -in -selection clipboard'
+alias gcb='xclip -out -selection clipboard'
+
 # ----------------------------------------
 # my additional configurations
 # ----------------------------------------
 
-if [ "$TMUX" = "" ]; then tmux; fi # start a new tmux session when startup
+# if [ "$TMUX" = "" ]; then tmux; fi # start a new tmux session when startup
 
 # ----------------------------------------
 # fzf shell integration
 # ----------------------------------------
 
 source <(fzf --zsh)
-export FZF_CTRL_T_COMMAND="fd --type f --hidden --exclude .git . /"
+export FZF_CTRL_T_COMMAND="fd --type file --type directory --hidden --exclude .git --exclude /mnt/c . /"
 
