@@ -6,15 +6,16 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/agnoster.omp.json" | Invoke
 
 function Edit-File {
     try {
-        $target = $(fd -tf . C:\ | fzf)
+        $target = $(es /a-d C:\ | fzf)
         $workDirectory = Split-Path -Path $($target)
         hx -w $($workDirectory) $($target)
     }
     catch {}
 }
+
 function Set-Location2 {
     try {
-        fd -td . C:\ | fzf | Set-Location
+        es /ad C:\ | fzf | Set-Location
     }
     catch {}
 }
